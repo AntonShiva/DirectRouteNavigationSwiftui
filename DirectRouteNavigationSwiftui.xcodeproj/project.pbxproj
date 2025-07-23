@@ -7,13 +7,37 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		3E95FAA52E2FC1CE00065764 /* NavigationTheBeast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationTheBeast.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E95FAA52E2FC1CE00065764 /* DirectRouteNavigationSwiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DirectRouteNavigationSwiftui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3E95FAB72E2FC84C00065764 /* Exceptions for "DirectRouteNavigationSwiftui" folder in "DirectRouteNavigationSwiftui" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				README.md,
+			);
+			target = 3E95FAA42E2FC1CE00065764 /* DirectRouteNavigationSwiftui */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		3E95FAB82E2FC84C00065764 /* Exceptions for "DirectRouteNavigationSwiftui" folder in "Compile Sources" phase from "DirectRouteNavigationSwiftui" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 3E95FAA12E2FC1CE00065764 /* Sources */;
+			membershipExceptions = (
+				README.md,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		3E95FAA72E2FC1CE00065764 /* NavigationTheBeast */ = {
+		3E95FAA72E2FC1CE00065764 /* DirectRouteNavigationSwiftui */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NavigationTheBeast;
+			exceptions = (
+				3E95FAB72E2FC84C00065764 /* Exceptions for "DirectRouteNavigationSwiftui" folder in "DirectRouteNavigationSwiftui" target */,
+				3E95FAB82E2FC84C00065764 /* Exceptions for "DirectRouteNavigationSwiftui" folder in "Compile Sources" phase from "DirectRouteNavigationSwiftui" target */,
+			);
+			path = DirectRouteNavigationSwiftui;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +56,7 @@
 		3E95FA9C2E2FC1CE00065764 = {
 			isa = PBXGroup;
 			children = (
-				3E95FAA72E2FC1CE00065764 /* NavigationTheBeast */,
+				3E95FAA72E2FC1CE00065764 /* DirectRouteNavigationSwiftui */,
 				3E95FAA62E2FC1CE00065764 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +64,7 @@
 		3E95FAA62E2FC1CE00065764 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3E95FAA52E2FC1CE00065764 /* NavigationTheBeast.app */,
+				3E95FAA52E2FC1CE00065764 /* DirectRouteNavigationSwiftui.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +72,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3E95FAA42E2FC1CE00065764 /* NavigationTheBeast */ = {
+		3E95FAA42E2FC1CE00065764 /* DirectRouteNavigationSwiftui */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E95FAB02E2FC1CF00065764 /* Build configuration list for PBXNativeTarget "NavigationTheBeast" */;
+			buildConfigurationList = 3E95FAB02E2FC1CF00065764 /* Build configuration list for PBXNativeTarget "DirectRouteNavigationSwiftui" */;
 			buildPhases = (
 				3E95FAA12E2FC1CE00065764 /* Sources */,
 				3E95FAA22E2FC1CE00065764 /* Frameworks */,
@@ -61,13 +85,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				3E95FAA72E2FC1CE00065764 /* NavigationTheBeast */,
+				3E95FAA72E2FC1CE00065764 /* DirectRouteNavigationSwiftui */,
 			);
-			name = NavigationTheBeast;
+			name = DirectRouteNavigationSwiftui;
 			packageProductDependencies = (
 			);
 			productName = NavigationTheBeast;
-			productReference = 3E95FAA52E2FC1CE00065764 /* NavigationTheBeast.app */;
+			productReference = 3E95FAA52E2FC1CE00065764 /* DirectRouteNavigationSwiftui.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +109,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3E95FAA02E2FC1CE00065764 /* Build configuration list for PBXProject "NavigationTheBeast" */;
+			buildConfigurationList = 3E95FAA02E2FC1CE00065764 /* Build configuration list for PBXProject "DirectRouteNavigationSwiftui" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +123,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3E95FAA42E2FC1CE00065764 /* NavigationTheBeast */,
+				3E95FAA42E2FC1CE00065764 /* DirectRouteNavigationSwiftui */,
 			);
 		};
 /* End PBXProject section */
@@ -274,12 +298,13 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
@@ -317,12 +342,13 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
@@ -330,7 +356,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3E95FAA02E2FC1CE00065764 /* Build configuration list for PBXProject "NavigationTheBeast" */ = {
+		3E95FAA02E2FC1CE00065764 /* Build configuration list for PBXProject "DirectRouteNavigationSwiftui" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E95FAAE2E2FC1CF00065764 /* Debug */,
@@ -339,7 +365,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3E95FAB02E2FC1CF00065764 /* Build configuration list for PBXNativeTarget "NavigationTheBeast" */ = {
+		3E95FAB02E2FC1CF00065764 /* Build configuration list for PBXNativeTarget "DirectRouteNavigationSwiftui" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E95FAB12E2FC1CF00065764 /* Debug */,

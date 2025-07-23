@@ -8,10 +8,12 @@
 import SwiftUI
 
 @main
-struct NavigationTheBeastApp: App {
+struct DirectRouteNavigationSwiftuiApp: App {
+    @StateObject private var navigationManager = NavigationManager.shared
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(navigationManager)
         }
     }
 }

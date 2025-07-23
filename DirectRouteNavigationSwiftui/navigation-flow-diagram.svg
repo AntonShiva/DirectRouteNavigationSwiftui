@@ -1,0 +1,224 @@
+<svg viewBox="0 0 1600 1200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Фон -->
+  <rect width="1600" height="1200" fill="#f8f9fa"/>
+  
+  <!-- Заголовок -->
+  <text x="800" y="40" text-anchor="middle" font-size="32" font-weight="bold" fill="#1a1a1a">
+    Программная навигация SwiftUI без NavigationStack
+  </text>
+  <text x="800" y="70" text-anchor="middle" font-size="18" fill="#666">
+    Прямые переходы через единый enum Route
+  </text>
+  
+  <!-- NavigationManager (центр) -->
+  <g id="navigation-manager">
+    <rect x="550" y="100" width="500" height="280" rx="15" fill="#2c3e50" stroke="#1a252f" stroke-width="3"/>
+    <text x="800" y="135" text-anchor="middle" font-size="24" font-weight="bold" fill="white">
+      NavigationManager (Singleton)
+    </text>
+    
+    <!-- Свойства -->
+    <rect x="570" y="160" width="460" height="80" rx="8" fill="#34495e"/>
+    <text x="590" y="185" font-size="14" fill="#ecf0f1">@Published currentRoute: Route = .home</text>
+    <text x="590" y="205" font-size="14" fill="#ecf0f1">@Published activeOverlay: OverlayType = .none</text>
+    <text x="590" y="225" font-size="14" fill="#f39c12">private routeBeforeComposite: Route? = nil</text>
+    
+    <!-- Методы -->
+    <rect x="570" y="250" width="220" height="110" rx="8" fill="#27ae60"/>
+    <text x="680" y="270" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Методы</text>
+    <text x="580" y="295" font-size="13" fill="white">go(_ route: Route)</text>
+    <text x="580" y="315" font-size="13" fill="white">showOverlay(_ type)</text>
+    <text x="580" y="335" font-size="13" fill="white">hideOverlay()</text>
+    <text x="580" y="355" font-size="13" fill="white">goHome(), goProfile()</text>
+    
+    <!-- Логика возврата -->
+    <rect x="810" y="250" width="220" height="110" rx="8" fill="#e74c3c"/>
+    <text x="920" y="270" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Логика возврата</text>
+    <text x="820" y="295" font-size="11" fill="white">if составной маршрут:</text>
+    <text x="830" y="310" font-size="11" fill="white">→ сохранить текущий</text>
+    <text x="820" y="330" font-size="11" fill="white">if hideOverlay():</text>
+    <text x="830" y="345" font-size="11" fill="white">→ вернуть сохраненный</text>
+  </g>
+  
+  <!-- Route Enum -->
+  <g id="route-enum">
+    <rect x="50" y="420" width="350" height="320" rx="10" fill="#8e44ad" stroke="#6c3483" stroke-width="2"/>
+    <text x="225" y="450" text-anchor="middle" font-size="20" font-weight="bold" fill="white">enum Route</text>
+    
+    <!-- Простые маршруты -->
+    <rect x="70" y="470" width="310" height="110" rx="8" fill="#9b59b6"/>
+    <text x="225" y="490" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Простые маршруты</text>
+    <text x="80" y="510" font-size="12" fill="white">• .home</text>
+    <text x="80" y="530" font-size="12" fill="white">• .search</text>
+    <text x="80" y="550" font-size="12" fill="white">• .favorites</text>
+    <text x="80" y="570" font-size="12" fill="white">• .profile</text>
+    <text x="200" y="510" font-size="12" fill="white">• .settings</text>
+    <text x="200" y="530" font-size="12" fill="white">• .detail(id: String)</text>
+    <text x="200" y="550" font-size="12" fill="white">• .favoriteItem(id: String)</text>
+    
+    <!-- Составные маршруты -->
+    <rect x="70" y="590" width="310" height="130" rx="8" fill="#e74c3c"/>
+    <text x="225" y="610" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Составные маршруты</text>
+    <text x="225" y="630" text-anchor="middle" font-size="11" fill="#ffcccc">(запоминают откуда пришли)</text>
+    <text x="80" y="655" font-size="12" fill="white">• .profileWithSettings</text>
+    <text x="90" y="675" font-size="10" fill="#ffcccc">→ profile + overlay settings</text>
+    <text x="80" y="695" font-size="12" fill="white">• .favoriteItemWithSettings(id)</text>
+    <text x="90" y="715" font-size="10" fill="#ffcccc">→ favoriteItem + overlay itemSettings</text>
+  </g>
+  
+  <!-- ContentView структура -->
+  <g id="content-view">
+    <rect x="450" y="420" width="700" height="320" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+    <text x="800" y="450" text-anchor="middle" font-size="20" font-weight="bold">ContentView</text>
+    
+    <!-- Header -->
+    <rect x="470" y="470" width="660" height="60" rx="8" fill="#f39c12"/>
+    <text x="800" y="495" text-anchor="middle" font-size="16" font-weight="bold" fill="white">HeaderView</text>
+    <text x="800" y="515" text-anchor="middle" font-size="12" fill="white">🔔 nav.showOverlay(.notification) | ⚙️ nav.go(.settings)</text>
+    
+    <!-- MainContainer с switch -->
+    <rect x="470" y="540" width="660" height="120" rx="8" fill="#3498db"/>
+    <text x="800" y="565" text-anchor="middle" font-size="16" font-weight="bold" fill="white">MainContainer (switch по currentRoute)</text>
+    <text x="490" y="590" font-size="12" fill="white">switch nav.currentRoute {</text>
+    <text x="500" y="610" font-size="12" fill="white">case .home: HomeView()</text>
+    <text x="500" y="630" font-size="12" fill="white">case .search: SearchView()</text>
+    <text x="500" y="650" font-size="12" fill="white">case .favorites: FavoritesView() ...</text>
+    
+    <!-- TabBar -->
+    <rect x="470" y="670" width="660" height="50" rx="8" fill="#2ecc71"/>
+    <text x="800" y="700" text-anchor="middle" font-size="16" font-weight="bold" fill="white">CustomTabBar</text>
+    <text x="530" y="695" font-size="24" fill="white">🏠</text>
+    <text x="650" y="695" font-size="24" fill="white">🔍</text>
+    <text x="770" y="695" font-size="24" fill="white">❤️</text>
+    <text x="890" y="695" font-size="24" fill="white">👤</text>
+    <text x="950" y="700" font-size="12" fill="white">nav.go(.home/search/favorites/profile)</text>
+  </g>
+  
+  <!-- Overlay Container -->
+  <g id="overlay-container">
+    <rect x="1200" y="420" width="350" height="200" rx="10" fill="#e67e22" stroke="#d35400" stroke-width="2"/>
+    <text x="1375" y="450" text-anchor="middle" font-size="20" font-weight="bold" fill="white">OverlayContainer</text>
+    <text x="1375" y="475" text-anchor="middle" font-size="14" fill="white">if nav.activeOverlay != .none</text>
+    
+    <rect x="1220" y="490" width="310" height="110" rx="8" fill="#f39c12"/>
+    <text x="1375" y="510" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Полупрозрачные окна</text>
+    <text x="1230" y="535" font-size="12" fill="white">• SettingsOverlay</text>
+    <text x="1230" y="555" font-size="12" fill="white">• FilterOverlay</text>
+    <text x="1230" y="575" font-size="12" fill="white">• ItemSettingsOverlay(itemId)</text>
+    <text x="1230" y="595" font-size="12" fill="white">• NotificationOverlay</text>
+  </g>
+  
+  <!-- Примеры переходов -->
+  <g id="flow-examples">
+    <rect x="50" y="780" width="1500" height="380" rx="15" fill="#34495e" stroke="#2c3e50" stroke-width="2"/>
+    <text x="800" y="815" text-anchor="middle" font-size="24" font-weight="bold" fill="white">Примеры навигационных потоков</text>
+    
+    <!-- Пример 1: Простой переход -->
+    <g transform="translate(100, 850)">
+      <rect x="0" y="0" width="300" height="120" rx="10" fill="#27ae60"/>
+      <text x="150" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Простой переход</text>
+      <rect x="10" y="40" width="80" height="30" rx="5" fill="#2ecc71"/>
+      <text x="50" y="60" text-anchor="middle" font-size="12" fill="white">Home</text>
+      <line x1="90" y1="55" x2="120" y2="55" stroke="white" stroke-width="2" marker-end="url(#arrowwhite)"/>
+      <text x="105" y="50" text-anchor="middle" font-size="10" fill="white">nav.go(.profile)</text>
+      <rect x="120" y="40" width="80" height="30" rx="5" fill="#2ecc71"/>
+      <text x="160" y="60" text-anchor="middle" font-size="12" fill="white">Profile</text>
+      <rect x="210" y="40" width="80" height="30" rx="5" fill="#e74c3c"/>
+      <text x="250" y="60" text-anchor="middle" font-size="12" fill="white">TabBar</text>
+      <text x="250" y="75" text-anchor="middle" font-size="9" fill="white">подсветка</text>
+      <text x="150" y="95" text-anchor="middle" font-size="11" fill="white">routeBeforeComposite = nil</text>
+      <text x="150" y="110" text-anchor="middle" font-size="11" fill="white">Обычная навигация</text>
+    </g>
+    
+    <!-- Пример 2: Составной маршрут -->
+    <g transform="translate(450, 850)">
+      <rect x="0" y="0" width="400" height="120" rx="10" fill="#e74c3c"/>
+      <text x="200" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Составной маршрут</text>
+      <rect x="10" y="40" width="60" height="30" rx="5" fill="#ec7063"/>
+      <text x="40" y="60" text-anchor="middle" font-size="12" fill="white">Home</text>
+      <line x1="70" y1="55" x2="100" y2="55" stroke="white" stroke-width="2" marker-end="url(#arrowwhite)"/>
+      <text x="85" y="50" text-anchor="middle" font-size="9" fill="white">nav.go(</text>
+      <text x="85" y="40" text-anchor="middle" font-size="9" fill="white">.favoriteItem</text>
+      <text x="85" y="30" text-anchor="middle" font-size="9" fill="white">WithSettings(5))</text>
+      <rect x="100" y="40" width="90" height="30" rx="5" fill="#ec7063"/>
+      <text x="145" y="60" text-anchor="middle" font-size="11" fill="white">Favorite #5</text>
+      <text x="145" y="50" text-anchor="middle" font-size="16" fill="white">+</text>
+      <rect x="200" y="35" width="80" height="40" rx="5" fill="#f39c12" opacity="0.9"/>
+      <text x="240" y="60" text-anchor="middle" font-size="11" fill="white">Settings</text>
+      <line x1="280" y1="55" x2="310" y2="55" stroke="white" stroke-width="2" marker-end="url(#arrowwhite)"/>
+      <text x="295" y="50" text-anchor="middle" font-size="9" fill="white">hideOverlay()</text>
+      <rect x="310" y="40" width="60" height="30" rx="5" fill="#27ae60"/>
+      <text x="340" y="60" text-anchor="middle" font-size="12" fill="white">Home</text>
+      <text x="200" y="95" text-anchor="middle" font-size="11" fill="#ffcccc">routeBeforeComposite = .home</text>
+      <text x="200" y="110" text-anchor="middle" font-size="11" fill="#ffcccc">Запомнили и вернулись!</text>
+    </g>
+    
+    <!-- Пример 3: Обычный оверлей -->
+    <g transform="translate(900, 850)">
+      <rect x="0" y="0" width="350" height="120" rx="10" fill="#3498db"/>
+      <text x="175" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Обычный оверлей</text>
+      <rect x="10" y="40" width="80" height="30" rx="5" fill="#5dade2"/>
+      <text x="50" y="60" text-anchor="middle" font-size="12" fill="white">Search</text>
+      <line x1="90" y1="55" x2="120" y2="55" stroke="white" stroke-width="2" marker-end="url(#arrowwhite)"/>
+      <text x="105" y="50" text-anchor="middle" font-size="9" fill="white">showOverlay</text>
+      <text x="105" y="40" text-anchor="middle" font-size="9" fill="white">(.filter)</text>
+      <rect x="120" y="40" width="80" height="30" rx="5" fill="#5dade2"/>
+      <text x="160" y="60" text-anchor="middle" font-size="12" fill="white">Search</text>
+      <text x="160" y="50" text-anchor="middle" font-size="16" fill="white">+</text>
+      <rect x="210" y="35" width="60" height="40" rx="5" fill="#f39c12" opacity="0.9"/>
+      <text x="240" y="60" text-anchor="middle" font-size="11" fill="white">Filter</text>
+      <line x1="270" y1="55" x2="290" y2="55" stroke="white" stroke-width="2" marker-end="url(#arrowwhite)"/>
+      <text x="280" y="50" text-anchor="middle" font-size="9" fill="white">hide</text>
+      <rect x="290" y="40" width="50" height="30" rx="5" fill="#5dade2"/>
+      <text x="315" y="60" text-anchor="middle" font-size="11" fill="white">Search</text>
+      <text x="175" y="95" text-anchor="middle" font-size="11" fill="white">routeBeforeComposite = nil</text>
+      <text x="175" y="110" text-anchor="middle" font-size="11" fill="white">Остаемся на том же экране</text>
+    </g>
+    
+    <!-- Легенда внизу -->
+    <g transform="translate(100, 1000)">
+      <text x="0" y="20" font-size="14" font-weight="bold" fill="white">Ключевые моменты:</text>
+      <circle cx="10" cy="45" r="5" fill="#e74c3c"/>
+      <text x="25" y="50" font-size="12" fill="white">Составные маршруты запоминают откуда пришли</text>
+      <circle cx="10" cy="70" r="5" fill="#27ae60"/>
+      <text x="25" y="75" font-size="12" fill="white">Простые переходы не сохраняют историю</text>
+      <circle cx="10" cy="95" r="5" fill="#f39c12"/>
+      <text x="25" y="100" font-size="12" fill="white">Оверлеи могут закрываться с возвратом или без</text>
+      <circle cx="10" cy="120" r="5" fill="#3498db"/>
+      <text x="25" y="125" font-size="12" fill="white">Все переходы мгновенные через switch</text>
+    </g>
+  </g>
+  
+  <!-- Стрелки -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="arrowwhite" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="white"/>
+    </marker>
+  </defs>
+  
+  <!-- Связи между блоками -->
+  <path d="M 400 580 L 550 280" fill="none" stroke="#8e44ad" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="420" y="420" font-size="12" fill="#8e44ad" transform="rotate(-50 420 420)">Route передается в go()</text>
+  
+  <path d="M 800 380 L 800 420" fill="none" stroke="#2c3e50" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="810" y="405" font-size="12" fill="#2c3e50">управляет ContentView</text>
+  
+  <path d="M 1050 280 L 1200 520" fill="none" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="1080" y="380" font-size="12" fill="#e74c3c" transform="rotate(35 1080 380)">activeOverlay != .none</text>
+  
+  <!-- Подписи методов -->
+  <g transform="translate(1250, 100)">
+    <rect x="0" y="0" width="300" height="180" rx="10" fill="#95a5a6" stroke="#7f8c8d" stroke-width="2"/>
+    <text x="150" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="white">API методы</text>
+    <text x="10" y="50" font-size="12" fill="white">nav.go(.home)</text>
+    <text x="10" y="70" font-size="12" fill="white">nav.go(.detail(id: "123"))</text>
+    <text x="10" y="90" font-size="12" fill="white">nav.go(.favoriteItemWithSettings(id: "5"))</text>
+    <text x="10" y="110" font-size="12" fill="white">nav.showOverlay(.filter)</text>
+    <text x="10" y="130" font-size="12" fill="white">nav.hideOverlay()</text>
+    <text x="10" y="150" font-size="12" fill="white">nav.goHome()</text>
+    <text x="10" y="170" font-size="12" fill="white">nav.goProfile()</text>
+  </g>
+</svg>
